@@ -21,11 +21,28 @@ app.listen(port, function () {
 function solveEq(req, res) {
   let inputData = req.body.input_data;
   console.log('post data', inputData);
-}
+  let result = 0;
+  if (inputData.opt === '1') {
+    result = inputData.firstNum*1.0 + inputData.secondNum*1.0;
+  } else if (inputData.opt === '2') {
+    result = inputData.firstNum - inputData.secondNum;
+  } else if (inputData.opt === '3') {
+    result = inputData.firstNum * inputData.secondNum;
+  } else if (inputData.opt === '4') {
+    result = inputData.firstNum / inputData.secondNum;
+  }
+  console.log('results', result);
+  return result;
+} 
 
-app.post('/calculation', function (req, res) {
+app.post('/calculation', (req, res) => {
   console.log('Post Calculation');
-  res.send(solveEq(req, res));
+  let inputData = req.body.input_data;
+  console.log('checkinputdata', inputData);
+  result = solveEq(req,res);
+  //  messages.push(solveEq(req, res));
+
+  res.json({ string1: result, string2: result });
 });
 
 /*

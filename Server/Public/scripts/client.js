@@ -51,7 +51,7 @@ function onSubmit(event) {
   let newEquation = {
     firstNum: $('#firstNum').val(),
     secondNum: $('#secondNum').val(),
-    operator: opt,
+    opt: opt,
   };
 
   console.log('newEquation', newEquation);
@@ -67,6 +67,7 @@ function onSubmit(event) {
     .then(function (response) {
       console.log('You submitted some stuff!');
       // run a function to post stuff on DOM
+      console.log('response came back', response);
     })
     .catch(function (error) {
       console.log('Sorry, seems to be something wrong,', error);
