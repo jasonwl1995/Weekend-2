@@ -18,14 +18,14 @@ app.listen(port, function () {
   console.log(`I'm Listening`, port);
 });
 
-function solveEq() {
+function solveEq(req, res) {
   let inputData = req.body.input_data;
   console.log('post data', inputData);
 }
 
 app.post('/calculation', function (req, res) {
   console.log('Post Calculation');
-  res.send(solveEq());
+  res.send(solveEq(req, res));
 });
 
 /*
