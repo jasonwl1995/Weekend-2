@@ -70,6 +70,12 @@ function onSubmit(event) {
       console.log('response came back', response);
       let ans = response.Answer;
       $('#calcResult').text(ans.result);
+
+        $('#calcHistory').append(`
+          <li>
+              ` + ans.lastOpt + ` 
+          </li>
+         `);
       console.log('check here',ans);
     })
     .catch(function (error) {

@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 const history = [];
+let lastOpt = '';
 
 // Share any files on ./server/public
 app.use(express.static('server/public'));
@@ -25,20 +26,20 @@ function solveEq(req, res) {
   let result = 0;
   if (inputData.opt === '1') {
     result = inputData.firstNum*1.0 + inputData.secondNum*1.0;
-    let tempString = inputData.firstNum + ' + ' + inputData.secondNum + ' = ' + result;
-    history.push(tempString);
+    lastOpt = inputData.firstNum + ' + ' + inputData.secondNum + ' = ' + result;
+    history.push(lastOpt);
   } else if (inputData.opt === '2') {
     result = inputData.firstNum - inputData.secondNum;
-    let tempString = inputData.firstNum + ' - ' + inputData.secondNum + ' = ' + result;
-    history.push(tempString);
+    lastOpt = inputData.firstNum + ' - ' + inputData.secondNum + ' = ' + result;
+    history.push(lastOpt);
   } else if (inputData.opt === '3') {
     result = inputData.firstNum * inputData.secondNum;
-    let tempString = inputData.firstNum + ' * ' + inputData.secondNum + ' = ' + result;
-    history.push(tempString);
+    lastOpt = inputData.firstNum + ' * ' + inputData.secondNum + ' = ' + result;
+    history.push(lastOpt);
   } else if (inputData.opt === '4') {
     result = inputData.firstNum / inputData.secondNum;
-    let tempString = inputData.firstNum + ' / ' + inputData.secondNum + ' = ' + result;
-    history.push(tempString);
+    lastOpt = inputData.firstNum + ' / ' + inputData.secondNum + ' = ' + result;
+    history.push(lastOpt);
   }
   console.log('results', result);
   return result;
@@ -51,7 +52,7 @@ app.post('/calculation', (req, res) => {
   result = solveEq(req,res);
   let dataToClient = {
     result: result,
-    history: history,
+    lastOpt: lastOpt,
     };
   //  messages.push(solveEq(req, res));
 
