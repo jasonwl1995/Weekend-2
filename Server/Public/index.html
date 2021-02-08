@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <script src="./scripts/jquery.js"></script>
+    <script src="./scripts/client.js"></script>
+    <title>Server Calculator</title>
+  </head>
+
+  <body>
+    <h1>Server Side Calculator</h1>
+    <div>
+      <form id="inputForm">
+        <input
+          id="firstNum"
+          type="number"
+          placeholder="First Number"
+          required
+        />
+        <input id="operation" type="button" value="+" />
+        <input id="operation" type="button" value="-" />
+        <input id="operation" type="button" value="*" />
+        <input id="operation" type="button" value="/" />
+        <input
+          id="secondNum"
+          type="number"
+          placeholder="Second Number"
+          required
+        />
+        <input type="submit" value="=" />
+        <input type="button" value="C" />
+      </form>
+    </div>
+    <div id="calcResult"></div>
+    <ul id="calcHistory"></ul>
+  </body>
+</html>
