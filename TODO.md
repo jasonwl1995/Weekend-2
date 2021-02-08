@@ -16,3 +16,5 @@
 - [] Use input operation to run calculation
 - [] Send result to DOM
 - [] Log all calculations as list in DOM
+
+
