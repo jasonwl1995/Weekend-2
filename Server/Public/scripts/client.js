@@ -68,6 +68,9 @@ function onSubmit(event) {
       console.log('You submitted some stuff!');
       // run a function to post stuff on DOM
       console.log('response came back', response);
+      let ans = response.Answer;
+      $('#calcResult').text(ans);
+      console.log('check here',ans);
     })
     .catch(function (error) {
       console.log('Sorry, seems to be something wrong,', error);

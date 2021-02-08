@@ -42,7 +42,7 @@ app.post('/calculation', (req, res) => {
   result = solveEq(req,res);
   //  messages.push(solveEq(req, res));
 
-  res.json({ string1: result, string2: result });
+  res.json({ Answer: result});
 });
 
 /*
