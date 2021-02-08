@@ -5,14 +5,41 @@ function onReady() {
 
   $(document).on('submit', '#inputForm', onSubmit);
   $(document).on('click', '#clearBtn', onClear);
+  $(document).on('click', '#opt1', onOpt1);
+  $(document).on('click', '#opt2', onOpt2);
+  $(document).on('click', '#opt3', onOpt3);
+  $(document).on('click', '#opt4', onOpt4);
 }
+
+// adding operator string
+let opt = '';
 
 function onClear(evt) {
   evt.preventDefault();
   console.log('Clear button clicked');
   $('#firstNum').val('');
   $('#secondNum').val('');
-  //  $('#operation').val();
+  opt = '';
+}
+
+function onOpt1(evt) {
+  evt.preventDefault();
+  opt = '1';
+}
+
+function onOpt2(evt) {
+  evt.preventDefault();
+  opt = '2';
+}
+
+function onOpt3(evt) {
+  evt.preventDefault();
+  opt = '3';
+}
+
+function onOpt4(evt) {
+  evt.preventDefault();
+  opt = '4';
 }
 
 function onSubmit(event) {
@@ -24,7 +51,7 @@ function onSubmit(event) {
   let newEquation = {
     firstNum: $('#firstNum').val(),
     secondNum: $('#secondNum').val(),
-    operation: $('#operation').val(),
+    operator: opt,
   };
 
   console.log('newEquation', newEquation);
