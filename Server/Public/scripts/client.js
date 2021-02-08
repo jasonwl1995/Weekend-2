@@ -68,17 +68,32 @@ function onSubmit(event) {
       console.log('You submitted some stuff!');
       // run a function to post stuff on DOM
       console.log('response came back', response);
-      let ans = response.Answer;
-      $('#calcResult').text(ans.result);
+        $.ajax({
+          url: '/getResults',
+          method: 'GET'
+        }) 
+          .then(function(getAnswer) {
+            console.log('Got a response', getAnswer);
+            let ans = getAnswer;
+            console.log('ans is', ans);
+              $('#calcResult').text(ans.result);
+                $('#calcHistory').append(`
+                  <li>
+                      ` + ans.lastOpt + ` 
+                  </li>
+                `); 
+              console.log('check here',ans); 
+      })
+        .catch(function(){
+          console.log('Sorry, seems something is wrong with GET', error);
+        })
 
-        $('#calcHistory').append(`
-          <li>
-              ` + ans.lastOpt + ` 
-          </li>
-         `);
-      console.log('check here',ans);
+
+
     })
+    
+
     .catch(function (error) {
       console.log('Sorry, seems to be something wrong,', error);
     });
-}
+    }

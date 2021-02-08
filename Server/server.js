@@ -6,7 +6,7 @@ const app = express();
 const port = 3000;
 const history = [];
 let lastOpt = '';
-
+let result = 0;
 // Share any files on ./server/public
 app.use(express.static('server/public'));
 app.use(bodyParser.json());
@@ -23,7 +23,6 @@ app.listen(port, function () {
 function solveEq(req, res) {
   let inputData = req.body.input_data;
   console.log('post data', inputData);
-  let result = 0;
   if (inputData.opt === '1') {
     result = inputData.firstNum*1.0 + inputData.secondNum*1.0;
     lastOpt = inputData.firstNum + ' + ' + inputData.secondNum + ' = ' + result;
@@ -55,7 +54,22 @@ app.post('/calculation', (req, res) => {
     lastOpt: lastOpt,
     };
   //  messages.push(solveEq(req, res));
-
   res.json({ Answer: dataToClient});
 });
 
+app.get('/getResults', function (req,res) {
+  console.log('GET Result');
+    let dataToClient = {
+    result: result,
+    lastOpt: lastOpt,
+    };
+  res.send(dataToClient);
+});
+
+function getAnswer() {
+    let dataToClient = {
+    result: result,
+    lastOpt: lastOpt,
+    };
+    return dataToClient;
+}
